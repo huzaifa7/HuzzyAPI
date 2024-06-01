@@ -5,19 +5,20 @@ using Microsoft.Extensions.Logging;
 
 namespace HuzzyApi
 {
-    public class Function1
+    public class DefaultFunction
     {
-        private readonly ILogger<Function1> _logger;
+        private readonly ILogger<DefaultFunction> _logger;
 
-        public Function1(ILogger<Function1> logger)
+        public DefaultFunction(ILogger<DefaultFunction> logger)
         {
             _logger = logger;
         }
 
         [Function("Function1")]
-        public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
+        public async Task<IActionResult> RunAsync([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
+            await Task.Delay(5000);
             return new OkObjectResult("Welcome to Azure Functions!");
         }
     }
