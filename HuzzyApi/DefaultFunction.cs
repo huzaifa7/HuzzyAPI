@@ -18,7 +18,7 @@ namespace HuzzyApi
         public async Task<IActionResult> RunAsync([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
-            await Task.Delay(5000);
+            await Task.Delay(3000);
             return new OkObjectResult("Welcome to Azure Functions!");
         }
     }
